@@ -4,5 +4,11 @@
 	"editor.insertSpaces": false,
 	"editor.detectIndentation": false,
 	"telemetry.enableTelemetry": false,
-	"conventionalCommits.scopes": []
+	"conventionalCommits.scopes": [
+		"proj1",
+		"proj2",
+		"proj3",
+		"proj4",
+		"proj5"
+	]
 }

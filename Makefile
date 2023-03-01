@@ -1,105 +1,54 @@
 ###############################################################################
 #
-# IXX-Projekt Makefile
-# (edit this file to fit the project)
+# ITY-Projekt Makefile
+# @author Onegen Something <xonege99@vutbr.cz>
 #
 # Usage:
-#   - `make` or `make all` or `make release` to build the project
-#   - `make debug` to build the project with debug flags
-#   - `make clean` to remove built binaries
-#   - `make format` to format the source code
-#   - `make lint` to lint the source code
+#   - `make` or `make all` to compile the PDF
+#   - `make clean` to remove built PDF
 #   - `make zip` to create a zip archive of the project
 #   - `make help` to show Makefile usage
 #
 ###############################################################################
 
-TARGET                 = ixx-projekt
-ZIPNAME                = xlogin00.zip
+TARGET                 = proj1
+ZIPNAME                = xonege99.zip
 
-##### Example: C #####
-
-CC 			        = gcc
-CFLAGS 		        = -std=c99
-EXTRA_CFLAGS 	        = -Wall -Wextra -Werror -pedantic \
-				-fdata-sections -ffunction-sections
-RELEASE_CFLAGS         = -DNDEBUG -O2 -march=native
-DEBUG_CFLAGS 	        = -g -Og -fsanitize=undefined
-LINT_FLAGS             = --format-style=file --fix \
-	-checks="bugprone-*,google-*,performance-*,readability-*"
-RM 		            = rm -f
-
-SRCS 		        = $(wildcard *.c)
-
-##### Example: C++ #####
-
-CPP                    = g++
-CPPFLAGS               = -std=c++20
-EXTRA_CPPFLAGS         = -Wall -Wextra -Werror -pedantic \
-				-fdata-sections -ffunction-sections
-RELEASE_CPPFLAGS       = -DNDEBUG -O2 -march=native
-DEBUG_CPPFLAGS         = -g -Og -fsanitize=undefined
-LINT_FLAGS             = --format-style=file --fix \
-	-checks="bugprone-*,google-*,performance-*,readability-*"
-RM                     = rm -f
-
-SRCS                   = $(wildcard *.cpp)
-
-##### Example: LaTeX #####
-
-LATEX                  = pdftex
+LATEX                  = latex
 DVIPS                  = dvips -t a4
-PS2PDF                 = ps2pdf
-
-SRCS                   = $(wildcard *.tex)
+PS2PDF                 = ps2pdf -sPAPERSIZE=a4
 
 ###############################################################################
 
-.PHONY: all release debug help clean zip lint format
+.PHONY: all help clean zip lint format
 
-all: release
+all: ${TARGET}.pdf
 
-release: EXTRA_CXFLAGS += ${RELEASE_CXFLAGS}
-release: ${TARGET}
-
-debug: EXTRA_CXFLAGS += ${DEBUG_CXFLAGS}
-debug: ${TARGET}
-
-${TARGET}: ${SRCS}
-	@##### C #####
-	${CC} ${CFLAGS} ${EXTRA_CFLAGS} ${SRCS} -o ${TARGET}
-	@#### C++ ####
-	${CPP} ${CPPFLAGS} ${EXTRA_CXFLAGS} ${SRCS} -o ${TARGET}
-	@### LaTeX ###
-	${LATEX} ${SRCS}
-	${DVIPS} ${SRCS}
-	${PS2PDF} ${SRCS}
-	@#############
-	@echo "projcpp compiled!"
-	@echo "Run with: ./projcpp -s omething"
+${TARGET}.pdf: ${TARGET}.tex
+	${LATEX} ${TARGET}.tex
+	${LATEX} ${TARGET}.tex
+	${DVIPS} ${TARGET}.dvi
+	${PS2PDF} ${TARGET}.ps
 
 help:
-	@echo "IXX-Project (Template Makefile)"
-	@echo "@author Something Interesting <xlogin00@vutbr.cz>"
+	@echo "ITY-Project 1"
+	@echo "@author Onegen Something <xonege99@vutbr.cz>"
 	@echo ""
 	@echo "Usage: make [TARGET]"
 	@echo "TARGETs:"
-	@echo "  all     compile and link the project (default)"
-	@echo "  debug   compile and link the project with debug flags"
-	@echo "  clean   clean objects and executables"
-	@echo "  format  run formatter"
-	@echo "  lint    run linter"
-	@echo "  zip     create a .zip archive with the source files"
+	@echo "  all     compile LaTeX to PDF (default)"
+	@echo "  clean   clean compiled files"
+	@echo "  zip     create a .zip archive with all sources"
 	@echo "  help    print this message"
 
-clean:
-	${RM} ${TARGET}
-
-zip:
-	zip -q -r ${ZIPNAME}.zip ${SRCS} Makefile
-
 format:
-	clang-format -i *.cpp *.hpp
+	latexindent -w ${TARGET}.tex
 
 lint:
-	clang-tidy ${SRCS} ${LINT_FLAGS} -- ${CFLAGS}
+	chktex ${TARGET}.tex
+
+clean:
+	${RM} ${TARGET}.{aux,dvi,log,ps,pdf} ${ZIPNAME}
+
+zip: ${ZIPNAME}
+	zip -q -r ${ZIPNAME} *.tex Makefile
