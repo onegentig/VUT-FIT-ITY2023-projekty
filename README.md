@@ -1,4 +1,4 @@
-# ITY PREDLOHA, FIT VUT 20XX #
+# ITY PREDLOHA, FIT VUT 2023 #
 
 *Projekty z predmetu Typografia a publikovanie (ITY), štvrtý semester bakalárskeho štúdia BIT na FIT VUT/BUT, ak.rok 2022/2023*
 
@@ -28,6 +28,3 @@ Celkové hodnotenie: ?? / 70<br />（?）
   * [ ] ⏰ 2023-04-08 **Deadline**
 
 ----------------------------------------------
-
-<!-- https://wakatime.com/share/badges/projects -->
-<div align="center"><a href="https://wakatime.com"><img alt="wakatime" height="20em" src="https://wakatime.com/badge/user/dd421270-8f1c-43aa-aa5b-ec52a2a18852/project/f9111082-2fea-4e6c-9cdd-fde7abab9c5d.svg?style=for-the-badge" /></a></div>
