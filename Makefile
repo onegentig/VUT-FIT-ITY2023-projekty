@@ -42,13 +42,19 @@ help:
 	@echo "  help    print this message"
 
 format:
-	latexindent -w ${TARGET}.tex
+	vlna -l -m -n ${TARGET}.tex
+	latexindent -w ${TARGET}.tex > /dev/null
+	diff -sy --left-column ${TARGET}.tex ${TARGET}.te~ || true
+	${RM} ${TARGET}.te~ ${TARGET}.bak0 indent.log
 
 lint:
 	chktex ${TARGET}.tex
 
 clean:
 	${RM} ${TARGET}.{aux,dvi,log,ps,pdf} ${ZIPNAME}
+
+comp: all
+	pdftk vzor.pdf multibackground ${TARGET}.pdf output compare.pdf
 
 zip: ${ZIPNAME}
 	zip -q -r ${ZIPNAME} *.tex Makefile
