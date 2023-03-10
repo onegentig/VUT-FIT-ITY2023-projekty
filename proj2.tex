@@ -76,7 +76,7 @@ která říká, že (matematický) text nemá být zalomen.
 	$(q, w, \alpha) \in Q \times \Sigma^\ast \times \Gamma^\ast$, kde
 	$q$ je aktuální stav vnitřního řízení,
 	$w$ je dosud nezpracovaná část vstupního řetězce
-	a $\alpha = Z_{i1} Z_{i2} \dots Z_{ik}$ je obsah zásobníku.
+	a $\alpha = Z_{i1} Z_{i2} \ldots Z_{ik}$ je obsah zásobníku.
 
 \end{definition}
 
@@ -90,8 +90,6 @@ která říká, že (matematický) text nemá být zalomen.
 	Množina $L(A) = \{ w\ |\ w \text{ je přijat ZA } A \} \subseteq \Sigma^\ast$
 	je \emph{jazyk přijímaný ZA} $A$.
 
-
-
 \end{definition}
 
 \begin{theorem}
@@ -102,6 +100,37 @@ která říká, že (matematický) text nemá být zalomen.
 
 
 \section{Rovnice}
+
+Složitější matematické formulace sázíme mimo plynulý text pomocí prostředí \texttt{displaymath}.
+Lze umístit i několik výrazů na jeden řádek, ale pak je třeba tyto vhodně oddělit,
+například příkazem \verb|\quad|.
+
+\[
+	1^{2^3} \neq \Delta^1_{\Delta^2_{\Delta^3}} \quad
+	y_{22}^{11} - \sqrt[9]{x + \sqrt[7]{y}} \quad
+	x > y_1 \leq y^2
+\]
+
+\noindent
+V~rovnici (\ref{eq:rov}) jsou využity tři typy závorek s~různou \emph{explicitně} definovanou velikostí.
+Také nepřehlédněte, že nasledující tři rovnice mají zarovnaná rovnítka, a použijte k~tomuto účelu
+vhodné prostředí.
+
+\begin{align}
+	               &                                                                               & - \cos^2 \beta
+	               & = \frac{\frac{\frac{1}{x} + \frac{1}{3}}{y} + 1000}{\prod\limits_{j=2}^8 q_j}                                                                                           \\
+	\label{eq:rov} &                                                                               & \biggl( {\Bigl\{ b \star \left[ 3 \div 4 \right] \circ a \Bigr\}}^{\frac{2}{3}} \biggr)
+	               & = \log_{10} x                                                                                                                                                           \\
+	               &                                                                               & \int_{a}^{b} f(x) \, \mathrm{d}x
+	               & = \int_{c}^{d} f(y) \, \mathrm{d}y
+\end{align}
+
+\noindent
+V~této větě vidíme, jak vypadá implicitní vysázení limity $\lim_{m\to\infty}f(m)$
+v~normálním odstavci textu. Podobně je to i s~dalšími symboly jako
+$\bigcup_{N \in \mathcal{M}}$ či $\sum_{i=1}^{m} x_{i}^{2}$.
+S~vynucením méně úsporné sazby příkazem \verb|\limits| budou vzorce vysázeny v~podobě
+$\lim\limits_{m\to\infty} f(m)$ a $\sum\limits_{i=1}^{m} x_{i}^{4}$.
 
 \section{Matice}
 
