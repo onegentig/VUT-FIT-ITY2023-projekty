@@ -25,7 +25,7 @@ ${TARGET}.pdf: ${TARGET}.tex
 	${PS2PDF} ${TARGET}.ps
 
 format:
-	vlna -l -m -n ${TARGET}.tex
+	vlna -l ${TARGET}.tex
 	latexindent -w ${TARGET}.tex > /dev/null
 	diff -sy --left-column ${TARGET}.tex ${TARGET}.te~ || true
 	${RM} ${TARGET}.te~ ${TARGET}.bak0 indent.log
