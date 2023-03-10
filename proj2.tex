@@ -7,6 +7,10 @@
 	\usepackage[IL2]{fontenc}
 	\usepackage{times}
 
+	\theoremstyle{plain}
+	\newtheorem{definition}{Definice}
+	\newtheorem{theorem}{Věta}
+
 \begin{document}
 
 \begin{titlepage}
@@ -25,8 +29,9 @@
 
 V~této úloze si vyzkoušíme sazbu titulní strany, mate\-matických vzorců,
 prostředí a dalších textových struktur obvyklých pro technicky zaměřené texty\,--\,například
-Defi\-nice 1 nebo rovnice (3) na straně 1. Pro vytvoření těchto odkazů používáme kombinace příkazů
-\verb|\label|, \verb|\ref|, \verb|\eqref| a \verb|\pageref|. Před odkazy patří nezlomitelná mezera.
+Defi\-nice~\ref{def:zasobnikovy-automat} nebo rovnice (3) na straně 1. Pro vytvoření těchto odkazů
+používáme kombinace příkazů \verb|\label|, \verb|\ref|, \verb|\eqref| a \verb|\pageref|.
+Před odkazy patří nezlomitelná mezera.
 Pro zvýrazňování textu jsou zde několikrát použity příkazy \verb|\verb| a \verb|\emph|.
 
 Na titulní straně je použito prostředí \texttt{titlepage} a sázení nadpisu podle
@@ -37,7 +42,64 @@ je použito odřádkování se zadanou relativní velikostí 0,5\,em a
 
 \section{Matematický text}
 
+V~této sekci se podíváme na sázení matematických symbolů a výrazů v~plynulém textu pomocí prostředí
+\texttt{math}. Definice a věty sázíme pomocí příkazu \verb|\newtheorem| s~využitím balíku
+\texttt{amsthm}. Někdy je vhodné použít konstrukci \verb|${}$| nebo \verb|\mbox{}|,
+která říká, že (matematický) text nemá být zalomen.
+
+\begin{definition}\label{def:zasobnikovy-automat}
+
+	\emph{Zásobníkový automat} (ZA) je definován jako sedmice tvaru
+	$A = (Q, \Sigma, \Gamma, \delta, q_0, Z_0, F)$, kde:
+
+	\begin{itemize}
+
+		\item $Q$ je konečná množina \emph{vnitřních (řídicích) stavů},
+
+		\item $\Sigma$ je konečná \emph{vstupní abeceda},
+
+		\item $\Gamma$ je konečná \emph{zásobníková abeceda},
+
+		\item $\delta$ je \emph{přechodová funkce}
+		      $Q \times \left( \Sigma \cup \{ \epsilon \} \right) \times
+			      \Gamma \rightarrow 2^{Q \times \Gamma^\ast} $,
+
+		\item $q_0 \in Q$ je \emph{počáteční stav},
+		      $Z_0 \in \Gamma$ je \emph{startovací symbol zásobníku}
+		      a $F \subseteq Q$ je množina \emph{koncových stavů}.
+
+	\end{itemize}
+
+	\normalfont{}
+	Nechť $P = (Q, \Sigma, \Gamma, \delta, q_0, Z_0, F)$ je ZA.
+	\emph{Konfigurací} nazveme trojici
+	$(q, w, \alpha) \in Q \times \Sigma^\ast \times \Gamma^\ast$, kde
+	$q$ je aktuální stav vnitřního řízení,
+	$w$ je dosud nezpracovaná část vstupního řetězce
+	a $\alpha = Z_{i1} Z_{i2} \dots Z_{ik}$ je obsah zásobníku.
+
+\end{definition}
+
 \subsection{Podsekce obsahující definici a větu}
+
+\begin{definition}
+
+	\emph{Řetězec $w$ nad abecedou $\Sigma$ je přijat ZA} $A$ jestliže
+	${(q_0, w, Z_0) \underset{A}{\overset{*}{\vdash}} (q_F, \epsilon, \gamma)}$ pro nějaké
+	${\gamma \in \Gamma^\ast}$ a ${q_F \in F}$.
+	Množina $L(A) = \{ w\ |\ w \text{ je přijat ZA } A \} \subseteq \Sigma^\ast$
+	je \emph{jazyk přijímaný ZA} $A$.
+
+
+
+\end{definition}
+
+\begin{theorem}
+
+	Třída jazyků, které jsou přijímány ZA, odpovídá \emph{bezkontextovým jazykům.}
+
+\end{theorem}
+
 
 \section{Rovnice}
 
