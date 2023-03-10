@@ -13,9 +13,9 @@ Celkové hodnotenie: ?? / 70<br />（?）
 
 * **Projekt 1** — ?? / 10
   * [X] ⏰ 2023-02-21 **Zadanie**
-  * [ ] ⏰ 2023-03-06 **Deadline**
+  * [X] ⏰ 2023-03-06 **Deadline**
 * **Projekt 2** — ?? / 15
-  * [ ] ⏰ 2023-03-07 **Zadanie**
+  * [X] ⏰ 2023-03-07 **Zadanie**
   * [ ] ⏰ 2023-03-20 **Deadline**
 * **Projekt 3** — ?? / 15
   * [ ] ⏰ 2023-03-21 **Zadanie**
