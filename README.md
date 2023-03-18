@@ -1,4 +1,4 @@
-# ITY PREDLOHA, FIT VUT 2023 #
+# ITY PROJEKTY, FIT VUT 2023 #
 
 *Projekty z predmetu Typografia a publikovanie (ITY), štvrtý semester bakalárskeho štúdia BIT na FIT VUT/BUT, ak.rok 2022/2023*
 
