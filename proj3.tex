@@ -7,6 +7,12 @@
 	\usepackage[utf8]{inputenc}
 	\usepackage[czech]{babel}
 	\usepackage{times}
+	
+	\urlstyle{same}
+
+	% Pre 'make compare' pre farebné odlíšenie:
+	\usepackage{color}
+	\color{blue}
 
 \begin{document}
 
@@ -35,7 +41,7 @@ prostředí\texttt{ tabular}.
 \subsection{Prostředí\texttt{ tabbing}}
 
 Při použití\texttt{ tabbing }vypadá tabulka následovně:
-
+%
 \begin{tabbing}
 	Vodni melouny \quad  \= \textbf{Cena} \quad \=                \kill
 	\textbf{Ovoce}       \> \textbf{Cena}       \> \textbf{Množství} \\
@@ -52,10 +58,7 @@ použít prostředí\texttt{ algorithm }nebo\texttt{ algorithm2e }(viz sekce
 \subsection{Prostředí\texttt{ tabular}}
 
 Další možností, jak vytvořit tabulku, je použít prostředí\texttt{ tabular}.
-Tabulky pak budou vypadat takto\footnote{
-	Kdyby byl problem s~\texttt{ cline,} zkuste se podívat třeba sem:
-	http://www.abclinuxu.cz/tex/poradna/show/325037.
-}:
+Tabulky pak budou vypadat takto\footnotemark[1]:
 
 \bigskip
 \begin{table}[h!]
@@ -63,16 +66,89 @@ Tabulky pak budou vypadat takto\footnote{
 	\centering
 	\begin{tabular}{|l|c|c|}
 		\hline
-		\multirow{2}{*}{\textbf{Měna}} & \multicolumn{2}{|c|}{\textbf{Cena}}                   \\ \cline{2-3}
-		                               & \textbf{nákup}                      & \textbf{prodej} \\
+		\multirow{2}{*}{\textbf{Měna}} & \multicolumn{2}{c|}{\textbf{Cena}}                   \\ \cline{2-3}
+		                               & \textbf{nákup}                     & \textbf{prodej} \\
 		\hline
-		EUR                            & 22,705                              & 25,242          \\
-		USD                            & 25,931                              & 28,828          \\
-		GBP                            & 21,347                              & 23,732          \\
+		EUR                            & 22,705                             & 25,242          \\
+		GBP                            & 25,931                             & 28,828          \\
+		USD                            & 21,347                             & 23,732          \\
 		\hline
 	\end{tabular}
+
 	\caption{Tabulka kurz\r{u} k~dnešnímu dni}
 	\label{tab:kurz}
+
 \end{table}
+
+\bigskip
+\begin{table}[h!]
+	\catcode`\-=12
+	\centering
+	\begin{tabular}{|c|c|}
+		\hline
+		$A$        & $\neg A$ \\
+		\hline
+		\textbf{P} & N        \\
+		\textbf{O} & O        \\
+		\textbf{X} & X        \\
+		\textbf{N} & P        \\
+		\hline
+	\end{tabular}
+	%
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		\multicolumn{2}{|c|}{\multirow{2}{*}{$A \wedge B$}} & \multicolumn{4}{c|}{$B$}                                            \\\cline{3-6}
+		\multicolumn{2}{|c|}{ }                             & \textbf{P}               & \textbf{O} & \textbf{X} & \textbf{N}     \\
+		\hline
+		\multirow{4}{*}{$A$}
+		                                                    & \textbf{P}               & P          & O          & X          & N \\ \cline{2-6}
+		                                                    & \textbf{O}               & O          & O          & N          & N \\ \cline{2-6}
+		                                                    & \textbf{X}               & X          & N          & X          & N \\ \cline{2-6}
+		                                                    & \textbf{N}               & N          & N          & N          & N \\ \cline{2-6}
+		\hline
+	\end{tabular}
+	%
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		\multicolumn{2}{|c|}{\multirow{2}{*}{$A \vee B$}} & \multicolumn{4}{c|}{$B$}                                             \\\cline{3-6}
+		\multicolumn{2}{|c|}{ }                           & \textbf{P}               & \textbf{O} & \textbf{X} & \textbf{N}      \\
+		\hline
+		\multirow{4}{*}{$A$}
+		                                                  & \textbf{P}               & P          & P          & P          & P  \\ \cline{2-6}
+		                                                  & \textbf{O}               & P          & O          & P          & O  \\ \cline{2-6}
+		                                                  & \textbf{X}               & P          & P          & X          & X  \\ \cline{2-6}
+		                                                  & \textbf{N}               & P          & O          & X          & N  \\ \cline{2-6}
+		\hline
+	\end{tabular}
+	%
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		\multicolumn{2}{|c|}{\multirow{2}{*}{$A \rightarrow B$}} & \multicolumn{4}{c|}{$B$}                                             \\\cline{3-6}
+		\multicolumn{2}{|c|}{ }                                  & \textbf{P}               & \textbf{O} & \textbf{X} & \textbf{N}      \\
+		\hline
+		\multirow{4}{*}{$A$}
+		                                                         & \textbf{P}               & P          & O          & X          & N  \\ \cline{2-6}
+		                                                         & \textbf{O}               & P          & O          & P          & O  \\ \cline{2-6}
+		                                                         & \textbf{X}               & P          & P          & X          & X  \\ \cline{2-6}
+		                                                         & \textbf{N}               & P          & P          & P          & P  \\ \cline{2-6}
+		\hline
+	\end{tabular}
+
+	\caption{Protože Kleeneho trojhodnotová logika už je \uv{zastaralá},
+		uvádíme si zde příklad čtyřhodnotové logiky}
+	\label{tab:log}
+
+\end{table}
+
+\footnotetext[1]{
+	Kdyby byl problem s\texttt{ cline,} zkuste se podívat třeba sem:
+	\url{http://www.abclinuxu.cz/tex/poradna/show/325037}.
+}
+
+\bigskip
+
+\pagebreak
+
+\section{Algoritmy}
 
 \end{document}
