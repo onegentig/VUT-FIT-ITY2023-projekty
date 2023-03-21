@@ -2,12 +2,10 @@
 
 	\usepackage[czech, linesnumbered, longend, noline, ruled]{algorithm2e}
 	\usepackage[top=3cm, left=2cm, text={17cm, 24cm}]{geometry}
+	\usepackage{graphics, multirow, pdflscape}
 	\usepackage[unicode, hidelinks]{hyperref}
 	\usepackage[utf8]{inputenc}
 	\usepackage[czech]{babel}
-	\usepackage{pdflscape}
-	\usepackage{multirow}
-	\usepackage{graphics}
 	\usepackage{times}
 
 \begin{document}
@@ -25,5 +23,56 @@
 \end{titlepage}
 
 \section{Úvodní strana}
+
+Název práce umístěte do zlatého řezu a nezapomeňte uvést \uv{dnešní} (today)
+datum a vaše jméno a příjmení.
+
+\section{Tabulky}
+
+Pro sázení tabulek m\r{u}žeme použít buď prostředí\texttt{ tabbing }nebo
+prostředí\texttt{ tabular}.
+
+\subsection{Prostředí\texttt{ tabbing}}
+
+Při použití\texttt{ tabbing }vypadá tabulka následovně:
+
+\begin{tabbing}
+	Vodni melouny \quad  \= \textbf{Cena} \quad \=                \kill
+	\textbf{Ovoce}       \> \textbf{Cena}       \> \textbf{Množství} \\
+	Jablka               \> 25,90               \> 3\,kg             \\
+	Hrušky               \> 27,40               \> 2,5\,kg           \\
+	Vodní melouny        \> 35,--               \> 1\,kus            \\
+\end{tabbing}
+
+\noindent
+Toto prostředí se dá také použít pro sázení algoritm\r{u}, ovšem vhodnější je
+použít prostředí\texttt{ algorithm }nebo\texttt{ algorithm2e }(viz sekce
+3).
+
+\subsection{Prostředí\texttt{ tabular}}
+
+Další možností, jak vytvořit tabulku, je použít prostředí\texttt{ tabular}.
+Tabulky pak budou vypadat takto\footnote{
+	Kdyby byl problem s~\texttt{ cline,} zkuste se podívat třeba sem:
+	http://www.abclinuxu.cz/tex/poradna/show/325037.
+}:
+
+\bigskip
+\begin{table}[h!]
+	\catcode`\-=12
+	\centering
+	\begin{tabular}{|l|c|c|}
+		\hline
+		\multirow{2}{*}{\textbf{Měna}} & \multicolumn{2}{|c|}{\textbf{Cena}}                   \\ \cline{2-3}
+		                               & \textbf{nákup}                      & \textbf{prodej} \\
+		\hline
+		EUR                            & 22,705                              & 25,242          \\
+		USD                            & 25,931                              & 28,828          \\
+		GBP                            & 21,347                              & 23,732          \\
+		\hline
+	\end{tabular}
+	\caption{Tabulka kurz\r{u} k~dnešnímu dni}
+	\label{tab:kurz}
+\end{table}
 
 \end{document}
