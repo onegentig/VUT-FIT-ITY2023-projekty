@@ -26,7 +26,7 @@
 
 \section{Úvodní strana}
 
-Název práce umístěte do zlatého řezu a nezapomeňte uvést \uv{dnešní} (today)
+Název práce umístěte do~zlatého řezu a~nezapomeňte uvést \uv{dnešní} (today)
 datum a vaše jméno a příjmení.
 
 \section{Tabulky}
@@ -169,7 +169,7 @@ prostředí\texttt{ algorithm2e }viz Algoritmus \ref{alg:fslam}.
 	\SetKwFor{For}{for}{do}{end\ for}
 	\SetKwFunction{SampleMotion}{sample\_motion\_model}
 	\SetKwFunction{MeasureModel}{measurement\_model}
-	\SetKwFunction{UpOccupancy}{updated\_occupancy\_grid}
+	\SetKwFunction{UpOccupancy}{$updated\_occupancy\_grid$}
 
 	\KwIn{ $(X_{t-1}, u_t, z_t)$}
 	\KwOut{ $X_t$}
@@ -191,7 +191,6 @@ prostředí\texttt{ algorithm2e }viz Algoritmus \ref{alg:fslam}.
 	\KwRet{$X_t$}
 \end{algorithm2e}
 
-\smallskip
 \section{Obrázky}
 
 Do našich článk\r{u} m\r{u}žeme samozřejmě vkládat obrázky. Pokud je obrázkem
@@ -206,7 +205,7 @@ vytvořit vektorově.
 		\reflectbox{\includegraphics{assets/proj3/etiopan.eps}}
 	}
 
-	\caption{Malý Etiopánek a jeho bratříček}
+	\caption{Malý Etiopánek a~jeho bratříček}
 	\label{fig:etiop}
 \end{figure}
 
@@ -220,5 +219,47 @@ vytvořit vektorově.
 	Pro\texttt{ algorithm2e }zase tuhle:
 	\url{http://ftp.cstug.cz/pub/tex/CTAN/macros/latex/contrib/algorithm2e/doc/algorithm2e.pdf}.
 }
+
+\bigskip
+\pagebreak
+
+Rozdíl mezi vektorovým \dots
+
+\begin{figure}[h]
+	\centering
+	\scalebox{0.4}{
+		\includegraphics{assets/proj3/oniisan.eps}
+	}
+
+	\caption{Vektorový obrázek}
+	\label{fig:oniisan}
+\end{figure}
+\bigskip
+
+\noindent
+\dots a bitmapovým obrázkem
+
+\begin{figure}[h]
+	\centering
+	\scalebox{0.6}{
+		\includegraphics{assets/proj3/oniisan2.eps}
+	}
+
+	\caption{Bitmapový obrázek}
+	\label{fig:oniisan2}
+\end{figure}
+\bigskip
+
+\noindent
+se projeví například při zvětšení.
+
+Odkazy (nejen ty) na obrázky \ref{fig:etiop}, \ref{fig:oniisan} a
+\ref{fig:oniisan2}, na tabulky \ref{tab:kurz} a \ref{tab:log} a také
+na algoritmus \ref{alg:fslam} jsou udělány pomocí křížových odkazů. Pak je
+ovšem potřeba zdrojový soubor přeložit dvakrát.
+
+Vektorové obrázky lze vytvořit i přímo v~\LaTeX{}u, například pomocí
+prostředí\texttt{ picture.}
+\pagebreak
 
 \end{document}
