@@ -2,17 +2,13 @@
 
 	\usepackage[algo2e, czech, noline, ruled]{assets/proj3/algorithm2e}
 	\usepackage[top=3cm, left=2cm, text={17cm, 24cm}]{geometry}
-	\usepackage{graphics, multirow, pdflscape}
+	\usepackage{graphics, multirow, pdflscape, setspace}
 	\usepackage[unicode, hidelinks]{hyperref}
 	\usepackage[utf8]{inputenc}
 	\usepackage[czech]{babel}
 	\usepackage{times}
 	
 	\urlstyle{same}
-
-	% Pre 'make compare' pre farebné odlíšenie:
-	\usepackage{color}
-	\color{blue}
 
 \begin{document}
 
@@ -139,13 +135,13 @@ Tabulky pak budou vypadat takto\footnotemark[1]:
 	\label{tab:log}
 
 \end{table}
+\bigskip
 
 \footnotetext[1]{
 	Kdyby byl problem s\texttt{ cline,} zkuste se podívat třeba sem:
 	\url{http://www.abclinuxu.cz/tex/poradna/show/325037}.
 }
 
-\bigskip
 \pagebreak
 
 \section{Algoritmy}
@@ -153,7 +149,7 @@ Tabulky pak budou vypadat takto\footnotemark[1]:
 Pokud budeme chtít vysázet algoritmus, m\r{u}žeme použít
 prostředí\texttt{ algorithm\footnotemark[2] }
 nebo\texttt{ algorithm2e\footnotemark[3]}. Příklad použití
-prostředí\texttt{ algorithm2e }viz Algoritmus 1.
+prostředí\texttt{ algorithm2e }viz Algoritmus \ref{alg:fslam}.
 
 \bigskip
 \begin{algorithm2e}
@@ -161,18 +157,68 @@ prostředí\texttt{ algorithm2e }viz Algoritmus 1.
 	\label{alg:fslam}
 
 	\LinesNumbered
+	\setstretch{0.9}
+	\SetInd{1em}{1em}
 	\SetNlSty{}{}{:}
 	\SetNlSkip{-1.2em}
 	\SetArgSty{textrm}
+	\SetFuncSty{emph}
 	\SetAlgoNlRelativeSize{-1}
 	\DontPrintSemicolon
-	
+
+	\SetKwFor{For}{for}{do}{end\ for}
+	\SetKwFunction{SampleMotion}{sample\_motion\_model}
+	\SetKwFunction{MeasureModel}{measurement\_model}
+	\SetKwFunction{UpOccupancy}{updated\_occupancy\_grid}
+
 	\KwIn{ $(X_{t-1}, u_t, z_t)$}
 	\KwOut{ $X_t$}
 	\Indentp{1.66em}
 	\BlankLine
 
 	$\overline{X_t} = X_t = 0$ \;
+	\For{$k = 1$ to $M$}{
+	$x_t^{[k]} =$ \SampleMotion{$ u_t, x_{t-1}^{[k]} $} \;
+	$\omega_t^{[k]} =$ \MeasureModel{$ z_t, x_t^{[k]}, m_{t-1} $} \;
+	$m_t^{[k]} =$ \UpOccupancy{$ z_t, x_t^{[k]}, m_{t-1}^{[k]} $} \;
+	$\overline{X_t} = \overline{X_t} \; + $
+	$\langle x_x^{[m]} , \omega_t^{[m]} \rangle$ \;
+	}
+	\For{$k = 1$ to $M$}{
+	draw $i$ with probability $\approx \omega_t^{[i]}$ \;
+	add $\langle x_x^{[k]} , m_t^{[k]} \rangle$ to $X_t$ \;
+	}
+	\KwRet{$X_t$}
 \end{algorithm2e}
+
+\smallskip
+\section{Obrázky}
+
+Do našich článk\r{u} m\r{u}žeme samozřejmě vkládat obrázky. Pokud je obrázkem
+fotografie, m\r{u}žeme klidně použít bitmapový soubor. Pokud by to ale mělo
+být nějaké schéma nebo něco podobného, je dobrým zvykem takovýto obrázek
+vytvořit vektorově.
+
+\begin{figure}[h]
+	\centering
+	\scalebox{0.4}{
+		\includegraphics{assets/proj3/etiopan.eps}
+		\reflectbox{\includegraphics{assets/proj3/etiopan.eps}}
+	}
+
+	\caption{Malý Etiopánek a jeho bratříček}
+	\label{fig:etiop}
+\end{figure}
+
+\footnotetext[2]{
+	Pro nápovědu, jak zacházet s~prostředím\texttt{ algorithm,} m\r{u}žeme
+	zkusit tuhle stránku:\\
+	\url{http://ftp.cstug.cz/pub/tex/CTAN/macros/latex/contrib/algorithms/algorithms.pdf}.
+}
+
+\footnotetext[3]{
+	Pro\texttt{ algorithm2e }zase tuhle:
+	\url{http://ftp.cstug.cz/pub/tex/CTAN/macros/latex/contrib/algorithm2e/doc/algorithm2e.pdf}.
+}
 
 \end{document}
