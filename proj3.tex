@@ -1,8 +1,8 @@
 \documentclass[a4paper, 11pt]{article}
 
-	\usepackage[algo2e, czech, noline, ruled]{assets/proj3/algorithm2e}
 	\usepackage[top=3cm, left=2cm, text={17cm, 24cm}]{geometry}
-	\usepackage{graphics, multirow, pdflscape, setspace}
+	\usepackage{color, pict2e, multirow, pdflscape, setspace}
+	\usepackage[algo2e, czech, noline, ruled]{algorithm2e}
 	\usepackage[unicode, hidelinks]{hyperref}
 	\usepackage[utf8]{inputenc}
 	\usepackage[czech]{babel}
@@ -201,8 +201,8 @@ vytvořit vektorově.
 \begin{figure}[h]
 	\centering
 	\scalebox{0.4}{
-		\includegraphics{assets/proj3/etiopan.eps}
-		\reflectbox{\includegraphics{assets/proj3/etiopan.eps}}
+		\includegraphics{etiopan.eps}
+		\reflectbox{\includegraphics{etiopan.eps}}
 	}
 
 	\caption{Malý Etiopánek a~jeho bratříček}
@@ -223,12 +223,12 @@ vytvořit vektorově.
 \bigskip
 \pagebreak
 
-Rozdíl mezi vektorovým \dots
+Rozdíl mezi vektorovým\,\dots
 
 \begin{figure}[h]
 	\centering
 	\scalebox{0.4}{
-		\includegraphics{assets/proj3/oniisan.eps}
+		\includegraphics{oniisan.eps}
 	}
 
 	\caption{Vektorový obrázek}
@@ -237,12 +237,12 @@ Rozdíl mezi vektorovým \dots
 \bigskip
 
 \noindent
-\dots a~bitmapovým obrázkem
+\dots\,a~bitmapovým obrázkem
 
 \begin{figure}[h]
 	\centering
 	\scalebox{0.6}{
-		\includegraphics{assets/proj3/oniisan2.eps}
+		\includegraphics{oniisan2.eps}
 	}
 
 	\caption{Bitmapový obrázek}
@@ -260,6 +260,111 @@ ovšem potřeba zdrojový soubor přeložit dvakrát.
 
 Vektorové obrázky lze vytvořit i~přímo v~\LaTeX{}u, například pomocí
 prostředí\texttt{ picture.}
+
 \pagebreak
+\bigskip
+
+\begin{landscape}
+	\begin{figure}[h]
+		\centering
+		\setlength{\unitlength}{1mm}
+		\begin{picture}(200,100)
+
+			% Rám
+			\linethickness{2pt}
+			\put(0, 0){\framebox(200, 100){}}
+
+			% Pôda a slnko
+			\linethickness{4pt}
+			\put(5, 5){\line(1, 0){190}}
+			\linethickness{0.5pt}
+			\put(180, 85){\circle{20}}
+
+			% Dom -- základ
+			\linethickness{1pt}
+			\put(10, 5){\framebox(110, 7){}}
+			\put(10, 12){\framebox(110, 26){}}
+			\linethickness{0.5pt}
+			\multiput(10, 5)(0, 3.5){2}{\line(1, 0){110}}
+			\multiput(15, 5)(10, 0){11}{\line(0, 1){3.5}}
+			\multiput(20, 8.5)(10, 0){10}{\line(0, 1){3.5}}
+
+			% Dom -- strecha
+			\linethickness{1pt}
+			\put(5, 38.2){\line(1, 0){5}}
+			\put(120, 38.2){\line(1, 0){5}}
+			\put(5, 38.2){\line(1, 2){6}}
+			\put(125, 38.2){\line(-1, 2){6}}
+			\put(11, 50){\line(1, 50){0.66}}
+			\put(119, 50){\line(-1, 50){0.66}}
+			\put(11.6, 83){\line(1, 1){10}}
+			\put(118.6, 83){\line(-1, 1){10}}
+			\put(21.6, 93){\line(1, 0){87}}
+			\linethickness{0.5pt}
+			\multiput(21, 50)(10, 0){5}{\line(1, 50){0.86}}
+			\multiput(69.3, 50)(10, 0){5}{\line(-1, 50){0.86}}
+			\multiput(5, 38)(10, 0){6}{\line(1, 2){6}}
+			\multiput(75.3, 38)(10, 0){5}{\line(-1, 2){6}}
+
+			% Dom -- miestnosť hore a komín 
+			\linethickness{1pt}
+			\put(44, 54){\textcolor{white}{\rule{40mm}{15mm}}}
+			\put(44, 69.3){\textcolor{white}{\rule{40mm}{12mm}}}
+			\put(40, 69.2){\textcolor{white}{\rule{2mm}{3mm}}}
+			\put(44, 54){\framebox(40, 15){}}
+			\put(40, 69.2){\line(1, 0){4}}
+			\put(83, 69.2){\line(1, 0){4}}
+			\put(45.8, 81.1){\line(1, 0){35.1}}
+			\put(40, 69.2){\line(1, 2){6}}
+			\put(86.75, 69.2){\line(-1, 2){6}}
+			\put(57, 83){\textcolor{white}{\rule{10mm}{12mm}}}
+			\put(57, 83){\framebox(10, 12){}}
+			\linethickness{0.5pt}
+			\multiput(57, 82.9)(0, 2.5){6}{\line(1, 0){10}}
+			\multiput(57, 83)(3.4, 0){3}{\line(0, 1){2.5}}
+			\multiput(58.6, 85.5)(3.4, 0){3}{\line(0, 1){2.5}}
+			\multiput(57, 88)(3.4, 0){3}{\line(0, 1){2.5}}
+			\multiput(58.6, 90.5)(3.4, 0){3}{\line(0, 1){2.5}}
+			\multiput(57, 93)(3.4, 0){3}{\line(0, 1){2.5}}
+
+			% Dom -- dvere
+			\linethickness{1pt}
+			\put(53, 5.66){\textcolor{white}{\rule{25mm}{10mm}}}
+			\put(53, 5){\framebox(1.5, 22.9){}}
+			\put(76.5, 5){\framebox(1.5, 22.9){}}
+			\put(51, 28.1){\line(1, 0){29}}
+			\put(54.5, 35.1){\line(1, 0){22.1}}
+			\put(51, 28.1){\line(1, 2){3.5}}
+			\put(80, 28.1){\line(-1, 2){3.5}}
+			\put(58.33, 5){\framebox(14, 20){}}
+			\put(65.33, 5){\line(0, 1){20}}
+			\linethickness{0.5pt}
+			\put(60.6, 12){\framebox(2, 10){}}
+			\put(67.66, 12){\framebox(2, 10){}}
+
+			% Dom -- okná
+			\linethickness{0.5pt}
+			\put(27, 24){\framebox(20, 12){}}
+			\put(28, 25){\framebox(18, 10){}}
+			\multiput(28, 25)(6, 0){3}{\line(0, 1){10}}
+			\put(54, 55.5){\framebox(19, 12){}}
+			\put(55, 56.5){\framebox(17, 10){}}
+			\put(63.5, 56.5){\line(0, 1){10}}
+
+			% Prístrešok
+			\linethickness{1pt}
+			\put(120, 33){\line(5, -1){35}}
+			\put(120, 25.66){\line(1, 0){35}}
+			\put(155, 5){\line(0, 1){21}}
+			\put(125, 5){\framebox(25, 14){}}
+			\linethickness{0.5pt}
+			\multiput(125, 5)(0, 1.77){8}{\line(1, 0){25}}
+
+		\end{picture}
+		\caption{Vektorový obrázek mého bydlení vytvořený v~\LaTeX{}u pomocí \texttt{picture}.}
+		\label{fig:domov}
+	\end{figure}
+
+\end{landscape}
 
 \end{document}
