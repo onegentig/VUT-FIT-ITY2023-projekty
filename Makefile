@@ -5,7 +5,7 @@
 #
 ###############################################################################
 
-TARGET                 = proj3
+TARGET                 = proj1
 
 LATEX                  = latex
 DVIPS                  = dvips -t a4
@@ -18,6 +18,9 @@ CP 			        = cp -vr
 
 .PHONY: format lint clean assets unasset
 
+# Vzdialený build (idk why ale LaTeX mi doma tvorí o niečo iný output)
+REMOTE_HOST            = ${VUT_XLOGIN}@merlin.fit.vutbr.cz
+REMOTE_CONN            = sshpass -f ${VUT_PTPASS}
 # Príkazy ssh na vzdialený build nejako niekedy nenačítajú PATH, takže tu
 # je workaround (použiť absolutnu cestu, ale len keď je treba).
 HOST                   = ${shell hostname}
@@ -31,7 +34,6 @@ else ifeq (${HOST},ongn-zetaxi270)
 # Menší clutter
 # @see https://gitlab.com/jirislav/pdftex-quiet
 	LATEX             := pdflatex-quiet -output-format=dvi
-	DVIPS             := ${DVIPS} -k -q
 endif
 
 # Assets
@@ -39,10 +41,6 @@ ASSETS                 = ${shell ls assets/${TARGET}}
 ifeq (${ASSETS},)
 	CP 			   = true
 endif
-
-# Env. premenné pre vzdialený prístup
-REMOTE_HOST            = ${VUT_XLOGIN}@merlin.fit.vutbr.cz
-REMOTE_CONN            = sshpass -f ${VUT_PTPASS}
 
 ###############################################################################
 
@@ -62,8 +60,22 @@ remote: ${TARGET}.tex
 		make -C dev/ity -s"
 	@${REMOTE_CONN} rsync -auvzhP ${REMOTE_HOST}:~/dev/ity/${TARGET}.** .
 
+# Jednodušší (priamy) compare:
+# (krajší výstup, ale je nutné manuálne zmeniť farbu v LaTeXe)
+#
+# compare: ${TARGET}.pdf
+# 	pdftk ${TARGET}.pdf multistamp vzor.pdf output compare.pdf
+#
+# Zložitejší (PopplerUtils & ImageMagick) compare:
 compare: ${TARGET}.pdf
-	pdftk vzor.pdf multibackground ${TARGET}.pdf output compare.pdf
+	pdftoppm ${TARGET}.pdf cpage -png
+	for file in cpage-*.png; do \
+		convert "$$file" -fuzz 85% -fill blue -opaque black "$$file"; \
+	done
+	convert $$(ls cpage-*.png | sort -V) ${TARGET}-blue.pdf
+	${RM} cpage-*.png
+	pdftk ${TARGET}-blue.pdf multistamp vzor.pdf output compare.pdf
+	${RM} ${TARGET}-blue.pdf
 
 lint:
 	chktex ${TARGET}.tex
