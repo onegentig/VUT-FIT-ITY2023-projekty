@@ -5,9 +5,10 @@
 #
 ###############################################################################
 
-TARGET                 = proj1
+TARGET                 = proj4
 
 LATEX                  = latex
+BIB                    = bibtex
 DVIPS                  = dvips -t a4
 PS2PDF                 = ps2pdf -sPAPERSIZE=a4
 
@@ -45,6 +46,8 @@ endif
 ###############################################################################
 
 ${TARGET}.pdf: ${TARGET}.tex
+	${LATEX} ${TARGET}.tex
+	${BIB} $(TARGET).aux
 	${LATEX} ${TARGET}.tex
 	${LATEX} ${TARGET}.tex
 	${DVIPS} ${TARGET}.dvi
@@ -87,7 +90,7 @@ format:
 	${RM} ${TARGET}.te~ ${TARGET}.bak0 indent.log
 
 clean: unasset
-	${RM} ${TARGET}.{aux,dvi,log,out,pdf,ps} compare.pdf 
+	${RM} ${TARGET}.{aux,dvi,log,out,pdf,ps,bbl,blg,run.xml} ${TARGET}-blx.bib compare.pdf
 
 # Assets - pretože som moc tvrdohlavý na to robiť podadresáre
 # pre každý projekt. :>
