@@ -27,9 +27,9 @@ REMOTE_CONN            = sshpass -f ${VUT_PTPASS}
 HOST                   = ${shell hostname}
 ifeq (${HOST},merlin.fit.vutbr.cz)
 	ifneq (${PROFILE_DONE},yes)
-		LATEX        := /usr/local/share/texlive/bin/${LATEX} \
-			-interaction=batchmode 
+		LATEX        := /usr/local/share/texlive/bin/${LATEX}
 		DVIPS        := /usr/local/share/texlive/bin/${DVIPS} -q
+		BIB          := /usr/local/share/texlive/bin/${BIB}
 	endif
 else ifeq (${HOST},ongn-zetaxi270)
 # Menší clutter
