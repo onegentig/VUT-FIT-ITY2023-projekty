@@ -2,29 +2,17 @@
 
 *Projekty z predmetu Typografia a publikovanie (ITY), štvrtý semester bakalárskeho štúdia BIT na FIT VUT/BUT, ak.rok 2022/2023*
 
-🔒 **Aktívny súkromný repozitár — nezverejňovať!**
-<!-- 🗄️ **Súkromný archivovaný repozitár!** -->
-<!-- ⚠️ **Zverejnené pre archívne účely — nekopírujte, nula by Vás mrzela. Za nič také nenesiem žiadnu zodpovednosť!** Všetky odovzdané projekty prechádzajú kontrolou plagiátorstva, pri ktorej sa porovnávajú aj s dávnejšie odovzdanými riešeniami. -->
+⚠️ **Zverejnené pre archívne účely — nekopírujte, nula by Vás mrzela. Za nič také nenesiem žiadnu zodpovednosť!** Všetky odovzdané projekty prechádzajú kontrolou plagiátorstva, pri ktorej sa porovnávajú aj s dávnejšie odovzdanými riešeniami.
 <br />
 
-Celkové hodnotenie: ?? / 70<br />（?）
+Celkové hodnotenie: 53,3 / 70<br />（proj5 skip kvôli skúškam, písomka vynahradila na B <img alt=":FeelsGoodEnoughMan:" src="https://user-images.githubusercontent.com/84882649/205744506-72b9a7a0-79d2-444d-b97a-db756f012b80.png" height="16px" /> ; celkom fajn voliteľný a zíde sa na BP, projekty však nie sú na jeden večer）
 
 ----------------------------------------------
 
-* **Projekt 1** — 9,5 / 10
-  * [X] ⏰ 2023-02-21 **Zadanie**
-  * [X] ⏰ 2023-03-06 **Deadline**
-* **Projekt 2** — 14,3 / 15
-  * [X] ⏰ 2023-03-07 **Zadanie**
-  * [X] ⏰ 2023-03-20 **Deadline**
-* **Projekt 3** — 15 / 15
-  * [X] ⏰ 2023-03-21 **Zadanie**
-  * [X] ⏰ 2023-04-03 **Deadline**
-* **Projekt 4** — 14,5 / 15
-  * [X] ⏰ 2023-04-04 **Zadanie**
-  * [X] ⏰ 2023-04-17 **Deadline**
-* **Projekt 5** — ?? / 15
-  * [X] ⏰ 2023-03-18 **Zadanie**
-  * [ ] ⏰ 2023-04-08 **Deadline**
+- [X] **Projekt 1** — 9,5 / 10
+- [X] **Projekt 2** — 14,3 / 15
+- [X] **Projekt 3** — 15 / 15
+- [X] **Projekt 4** — 14,5 / 15
+- [ ] **Projekt 5** — 0 / 15
 
 ----------------------------------------------
