@@ -1,12 +1,12 @@
 ###############################################################################
 #
 # ITY-Projekt Makefile
-# @author Onegen Something <xonege99@vutbr.cz>
+# @author Filip J. Kramec <xkrame00@vutbr.cz>
 #
 ###############################################################################
 
 TARGET                 = proj1
-ZIPNAME                = xonege99.zip
+ZIPNAME                = xkrame00.zip
 
 LATEX                  = latex
 DVIPS                  = dvips -t a4
